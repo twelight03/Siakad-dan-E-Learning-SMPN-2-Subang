@@ -67,6 +67,7 @@ class TeacherController extends Controller
                 'gender' => $validated['gender'] ?? null,
                 'phone' => $validated['phone'] ?? null,
                 'address' => $validated['address'] ?? null,
+                'max_hours_per_week' => $validated['max_hours_per_week'] ?? 24,
             ]);
 
             ActivityLog::log('create', 'Teacher', $teacher->id, "Menambahkan data guru {$user->name} (NIP: {$teacher->nip}).");
@@ -106,6 +107,7 @@ class TeacherController extends Controller
                 'gender' => $validated['gender'] ?? null,
                 'phone' => $validated['phone'] ?? null,
                 'address' => $validated['address'] ?? null,
+                'max_hours_per_week' => $validated['max_hours_per_week'] ?? 24,
             ]);
 
             ActivityLog::log('update', 'Teacher', $teacher->id, "Memperbarui data guru {$teacher->user->name}.");

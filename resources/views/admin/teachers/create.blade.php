@@ -75,6 +75,13 @@
                         </div>
 
                         <div>
+                            <x-input-label for="max_hours_per_week" value="Batas Maksimal Beban Mengajar (Jam/Minggu)" />
+                            <x-text-input id="max_hours_per_week" name="max_hours_per_week" type="number" min="1" max="50" class="mt-1 block w-full" :value="old('max_hours_per_week', 24)" />
+                            <p class="text-[11px] text-slate-400 mt-1">Batas beban mengajar mingguan guru (contoh: 7, 12, atau 24 jam).</p>
+                            <x-input-error class="mt-2" :messages="$errors->get('max_hours_per_week')" />
+                        </div>
+
+                        <div>
                             <x-input-label for="address" value="Alamat Tempat Tinggal" />
                             <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address')" placeholder="Alamat singkat..." />
                             <x-input-error class="mt-2" :messages="$errors->get('address')" />

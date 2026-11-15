@@ -36,6 +36,7 @@
                             <th class="px-4 py-3 bg-slate-50">NIP</th>
                             <th class="px-4 py-3 bg-slate-50">Username</th>
                             <th class="px-4 py-3 bg-slate-50">Kontak</th>
+                            <th class="px-4 py-3 bg-slate-50 text-center">Beban Maksimal</th>
                             <th class="px-4 py-3 bg-slate-50 text-center">Status Akun</th>
                             <th class="px-4 py-3 bg-slate-50 text-center">Aksi</th>
                         </tr>
@@ -52,6 +53,11 @@
                                 <td class="px-4 py-3 text-slate-600">
                                     <div>{{ $teacher->phone ?? '-' }}</div>
                                     <div class="text-xs text-slate-400">{{ $teacher->user->email ?? 'Tidak ada email' }}</div>
+                                </td>
+                                <td class="px-4 py-3 text-center">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                                        ⚡ {{ $teacher->max_hours_per_week ?? 24 }} Jam/Mgg
+                                    </span>
                                 </td>
                                 <td class="px-4 py-3 text-center">
                                     @if($teacher->user->is_active)

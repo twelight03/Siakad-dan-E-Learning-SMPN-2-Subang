@@ -17,6 +17,7 @@ class Teacher extends Model
         'gender',
         'phone',
         'address',
+        'max_hours_per_week',
     ];
 
     public function user(): BelongsTo

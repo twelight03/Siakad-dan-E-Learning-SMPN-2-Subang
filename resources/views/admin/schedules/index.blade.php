@@ -7,16 +7,36 @@
                 </h2>
                 <p class="text-xs text-slate-500 mt-0.5">Tata letak jadwal KBM terstruktur per hari dengan pembatas visual.</p>
             </div>
-            <a href="{{ route('admin.schedules.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-bold shadow-sm transition">
-                <svg class="w-4 h-4 me-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                </svg>
-                Tambah Jadwal Baru
-            </a>
+            <div class="flex items-center space-x-2">
+                <a href="{{ route('admin.schedules.auto-generate.index') }}" class="inline-flex items-center px-3.5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-bold shadow-sm transition">
+                    <svg class="w-4 h-4 me-1.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    Buat Jadwal Otomatis
+                </a>
+                <a href="{{ route('admin.schedules.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-bold shadow-sm transition">
+                    <svg class="w-4 h-4 me-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    Tambah Manual
+                </a>
+            </div>
         </div>
     </x-slot>
 
     <div class="p-4 sm:p-6 space-y-5">
+        @if(session('generator_warnings'))
+            <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs space-y-1">
+                <span class="font-bold flex items-center text-amber-800">
+                    ⚠️ Pemberitahuan Generator Jadwal:
+                </span>
+                <ul class="list-disc list-inside space-y-0.5 text-slate-700">
+                    @foreach(session('generator_warnings') as $w)
+                        <li>{{ $w }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Filter Card -->
         <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
             <form method="GET" action="{{ route('admin.schedules.index') }}" class="grid grid-cols-1 sm:grid-cols-4 gap-3 items-end">

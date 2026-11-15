@@ -30,6 +30,7 @@ class TeacherRequest extends FormRequest
             'gender' => ['nullable', 'in:male,female'],
             'phone' => ['nullable', 'string', 'max:20'],
             'address' => ['nullable', 'string', 'max:500'],
+            'max_hours_per_week' => ['nullable', 'integer', 'min:1', 'max:50'],
         ];
     }
 

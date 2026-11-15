@@ -60,6 +60,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('students', \App\Http\Controllers\Admin\StudentController::class);
     Route::resource('enrollments', \App\Http\Controllers\Admin\StudentEnrollmentController::class);
     Route::resource('class-subjects', \App\Http\Controllers\Admin\ClassSubjectController::class);
+    Route::get('schedules/auto-generate', [\App\Http\Controllers\Admin\ScheduleGeneratorController::class, 'index'])->name('schedules.auto-generate.index');
+    Route::post('schedules/auto-generate', [\App\Http\Controllers\Admin\ScheduleGeneratorController::class, 'generate'])->name('schedules.auto-generate.run');
     Route::resource('schedules', \App\Http\Controllers\Admin\ScheduleController::class);
     Route::get('promotions', [\App\Http\Controllers\Admin\ClassPromotionController::class, 'index'])->name('promotions.index');
     Route::post('promotions/direct', [\App\Http\Controllers\Admin\ClassPromotionController::class, 'directPromotion'])->name('promotions.direct');

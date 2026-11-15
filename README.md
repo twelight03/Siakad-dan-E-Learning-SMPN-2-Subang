@@ -12,7 +12,7 @@
 | **Instansi / Sekolah** | SMP Negeri 2 Subang (Kec. Subang, Kab. Kuningan, Jawa Barat - NPSN: 20212952) |
 | **URL Aplikasi Aktif (HTTPS)** | [https://fraction-capability-attempting-alarm.trycloudflare.com](https://fraction-capability-attempting-alarm.trycloudflare.com) |
 | **URL Repository GitHub** | [https://github.com/twelight03/Siakad-dan-E-Learning-SMPN-2-Subang](https://github.com/twelight03/Siakad-dan-E-Learning-SMPN-2-Subang) |
-| **Status Pengujian** | ✅ **176 Passed (515 Assertions)** — Termasuk 12 Security Hardening Suite |
+| **Status Pengujian** | ✅ **179 Passed (530 Assertions)** — Termasuk 12 Security Hardening Suite |
 
 ---
 
@@ -44,7 +44,10 @@ Untuk keperluan pengujian fitur dan penilaian oleh dosen/evaluator, gunakan akun
 ### 2. Portal Administrator (Tata Usaha)
 - **Master Data Pengguna:** Manajemen akun Admin, Guru, dan Siswa beserta profil lengkap.
 - **Master Data Akademik:** Pengelolaan Tahun Ajaran aktif, Data Kelas (Tingkat 7, 8, 9), dan Mata Pelajaran.
-- **Plotting & Penjadwalan:** Alokasi guru pengampu kelas dan pembuatan jadwal KBM dengan **deteksi bentrok otomatis**, serta tampilan jadwal terstruktur per hari dengan pembatas visual warna-warni.
+- **Plotting & Penjadwalan:**
+  - *Generator Jadwal Otomatis Cerdas:* Penyusunan jadwal pelajaran otomatis tanpa bentrok guru dan ruang kelas, dengan alokasi slot jam KBM berbeda per tingkatan (Tingkat 7, 8, 9).
+  - *Batas Beban Mengajar Guru:* Operator dapat membatasi beban mengajar per guru (misal: 7 jam, 12 jam, 24 jam per minggu), dan generator otomatis mematuhi batas beban tersebut.
+  - *Tampilan Terstruktur per Hari:* Jadwal disajikan per hari kerja (Senin s/d Jumat) dengan pembatas visual warna-warni dan filter cepat.
 - **Kenaikan Kelas & Distribusi Siswa:**
   - *Kenaikan Langsung 1 Kelas Penuh:* Memindahkan seluruh siswa satu kelas asal ke kelas tujuan tingkat berikutnya secara massal.
   - *Distribusi & Acak Siswa:* Mengacak dan membagikan siswa dari beberapa kelas asal ke kelas-kelas tujuan dengan kuota per kelas dan **penyeimbangan gender otomatis** (komposisi L/P sama rata).
