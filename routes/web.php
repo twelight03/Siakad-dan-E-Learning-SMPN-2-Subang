@@ -7,7 +7,14 @@ use App\Http\Controllers\Teacher\DashboardController as TeacherDashboardControll
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $stats = [
+        'total_students' => \App\Models\Student::count(),
+        'total_teachers' => \App\Models\Teacher::count(),
+        'total_classes' => \App\Models\SchoolClass::count(),
+        'total_subjects' => \App\Models\Subject::count(),
+        'active_year' => \App\Models\AcademicYear::where('is_active', true)->first(),
+    ];
+    return view('welcome', compact('stats'));
 });
 
 Route::get('/dashboard', function () {
