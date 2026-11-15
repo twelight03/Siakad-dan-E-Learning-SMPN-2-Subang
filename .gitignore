@@ -1,6 +1,7 @@
 # Excluded documentation and sensitive files
 ANTIGRAVITY_SIAKAD_SMP/
 *.md
+!README.md
 siakad.tar.gz
 database/*.sqlite
 database/*.sqlite-journal

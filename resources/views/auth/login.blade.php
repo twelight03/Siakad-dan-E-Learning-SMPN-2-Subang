@@ -51,5 +51,14 @@
                 Masuk
             </x-primary-button>
         </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-200 text-center">
+            <p class="text-xs text-gray-600">
+                Belum memiliki akun siswa?
+                <a href="{{ route('register') }}" class="font-semibold text-blue-600 hover:text-blue-800 underline ml-1">
+                    Daftar Akun Siswa Baru
+                </a>
+            </p>
+        </div>
     </form>
 </x-guest-layout>
