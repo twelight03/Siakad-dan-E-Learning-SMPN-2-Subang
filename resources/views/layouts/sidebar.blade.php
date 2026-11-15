@@ -92,6 +92,12 @@
                     </svg>
                     Penempatan Siswa
                 </a>
+                <a href="{{ route('admin.promotions.index') }}" class="flex items-center px-3 py-2 text-sm rounded-lg transition-colors {{ request()->routeIs('admin.promotions.*') ? 'bg-blue-50 text-blue-700 font-bold border-l-4 border-blue-600 rounded-l-none' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium' }}">
+                    <svg class="w-5 h-5 me-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                    </svg>
+                    Kenaikan & Acak Kelas
+                </a>
                 <a href="{{ route('admin.class-subjects.index') }}" class="flex items-center px-3 py-2 text-sm rounded-lg transition-colors {{ request()->routeIs('admin.class-subjects.*') ? 'bg-blue-50 text-blue-700 font-bold border-l-4 border-blue-600 rounded-l-none' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium' }}">
                     <svg class="w-5 h-5 me-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
@@ -159,6 +165,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                     </svg>
                     Tugas E-Learning
+                </a>
+                <a href="{{ route('teacher.groups.index') }}" class="flex items-center px-3 py-2 text-sm rounded-lg transition-colors {{ request()->routeIs('teacher.groups.*') ? 'bg-blue-50 text-blue-700 font-bold border-l-4 border-blue-600 rounded-l-none' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium' }}">
+                    <svg class="w-5 h-5 me-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    Acak Kelompok
                 </a>
 
             @elseif(Auth::user()->isStudent())

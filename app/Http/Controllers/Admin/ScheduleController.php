@@ -38,20 +38,35 @@ class ScheduleController extends Controller
             $query->where('day_of_week', $request->input('day_of_week'));
         }
 
-        $perPage = (int) $request->input('per_page', 10);
+        $perPage = (int) $request->input('per_page', 50);
         if (! in_array($perPage, [10, 25, 50, 100])) {
-            $perPage = 10;
+            $perPage = 50;
         }
 
-        $schedules = $query->orderByRaw("CASE day_of_week WHEN 'monday' THEN 1 WHEN 'tuesday' THEN 2 WHEN 'wednesday' THEN 3 WHEN 'thursday' THEN 4 WHEN 'friday' THEN 5 WHEN 'saturday' THEN 6 ELSE 7 END")
+        $allSchedules = (clone $query)->orderByRaw("CASE day_of_week WHEN 'monday' THEN 1 WHEN 'tuesday' THEN 2 WHEN 'wednesday' THEN 3 WHEN 'thursday' THEN 4 WHEN 'friday' THEN 5 WHEN 'saturday' THEN 6 ELSE 7 END")
+            ->orderBy('start_time')
+            ->get();
+
+        $schedules = (clone $query)->orderByRaw("CASE day_of_week WHEN 'monday' THEN 1 WHEN 'tuesday' THEN 2 WHEN 'wednesday' THEN 3 WHEN 'thursday' THEN 4 WHEN 'friday' THEN 5 WHEN 'saturday' THEN 6 ELSE 7 END")
             ->orderBy('start_time')
             ->paginate($perPage)
             ->withQueryString();
 
+        $schedulesByDay = $allSchedules->groupBy('day_of_week');
+
         $classes = SchoolClass::orderBy('grade_level')->orderBy('name')->get();
         $academicYears = AcademicYear::orderByDesc('start_date')->get();
 
-        return view('admin.schedules.index', compact('schedules', 'classes', 'academicYears', 'selectedYearId'));
+        $daysMap = [
+            'monday' => ['label' => 'Senin', 'color' => 'blue', 'border' => 'border-blue-500', 'badge' => 'bg-blue-100 text-blue-800'],
+            'tuesday' => ['label' => 'Selasa', 'color' => 'emerald', 'border' => 'border-emerald-500', 'badge' => 'bg-emerald-100 text-emerald-800'],
+            'wednesday' => ['label' => 'Rabu', 'color' => 'amber', 'border' => 'border-amber-500', 'badge' => 'bg-amber-100 text-amber-800'],
+            'thursday' => ['label' => 'Kamis', 'color' => 'purple', 'border' => 'border-purple-500', 'badge' => 'bg-purple-100 text-purple-800'],
+            'friday' => ['label' => 'Jumat', 'color' => 'teal', 'border' => 'border-teal-500', 'badge' => 'bg-teal-100 text-teal-800'],
+            'saturday' => ['label' => 'Sabtu', 'color' => 'orange', 'border' => 'border-orange-500', 'badge' => 'bg-orange-100 text-orange-800'],
+        ];
+
+        return view('admin.schedules.index', compact('schedules', 'schedulesByDay', 'classes', 'academicYears', 'selectedYearId', 'daysMap'));
     }
 
     public function create(): View

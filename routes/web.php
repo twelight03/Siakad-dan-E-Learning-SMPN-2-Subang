@@ -61,6 +61,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('enrollments', \App\Http\Controllers\Admin\StudentEnrollmentController::class);
     Route::resource('class-subjects', \App\Http\Controllers\Admin\ClassSubjectController::class);
     Route::resource('schedules', \App\Http\Controllers\Admin\ScheduleController::class);
+    Route::get('promotions', [\App\Http\Controllers\Admin\ClassPromotionController::class, 'index'])->name('promotions.index');
+    Route::post('promotions/direct', [\App\Http\Controllers\Admin\ClassPromotionController::class, 'directPromotion'])->name('promotions.direct');
+    Route::post('promotions/distribute/preview', [\App\Http\Controllers\Admin\ClassPromotionController::class, 'previewDistribution'])->name('promotions.distribute.preview');
+    Route::post('promotions/distribute/apply', [\App\Http\Controllers\Admin\ClassPromotionController::class, 'applyDistribution'])->name('promotions.distribute.apply');
     Route::get('activity-logs', [\App\Http\Controllers\Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
     Route::get('reports', [\App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
     Route::get('reports/students', [\App\Http\Controllers\Admin\ReportController::class, 'students'])->name('reports.students');
@@ -82,6 +86,7 @@ Route::middleware(['auth', 'role:teacher'])->prefix('teacher')->name('teacher.')
     Route::get('assignments/{assignment}/attachment', [\App\Http\Controllers\Teacher\AssignmentController::class, 'downloadAttachment'])->name('assignments.attachment.download');
     Route::get('submissions/{submission}/download', [\App\Http\Controllers\Teacher\AssignmentController::class, 'downloadSubmission'])->name('assignments.submissions.download');
     Route::post('submissions/{submission}/grade', [\App\Http\Controllers\Teacher\AssignmentController::class, 'gradeSubmission'])->name('assignments.submissions.grade');
+    Route::get('group-generator', [\App\Http\Controllers\Teacher\GroupGeneratorController::class, 'index'])->name('groups.index');
 });
 
 // Student Routes
