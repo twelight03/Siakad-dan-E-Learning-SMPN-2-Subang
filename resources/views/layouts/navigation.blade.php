@@ -6,9 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
-                        <div class="w-8 h-8 rounded bg-blue-600 text-white font-black flex items-center justify-center text-sm shadow">
-                            S2
-                        </div>
+                        <img src="{{ asset('images/logo-smpn2.png') }}" alt="Logo SMPN 2 Subang" class="w-8 h-8 object-contain">
                         <span class="font-bold text-gray-900 hidden md:inline text-base">SIAKAD SMPN 2</span>
                     </a>
                 </div>

@@ -22,9 +22,7 @@
         <!-- Brand Header -->
         <div class="h-16 px-4 border-b border-slate-200 flex items-center justify-between bg-white sticky top-0 z-10">
             <a href="{{ route('dashboard') }}" class="flex items-center space-x-2.5">
-                <div class="w-9 h-9 rounded-lg bg-blue-600 text-white font-black flex items-center justify-center text-sm shadow-sm shadow-blue-200">
-                    S2
-                </div>
+                <img src="{{ asset('images/logo-smpn2.png') }}" alt="Logo SMPN 2 Subang" class="w-9 h-9 object-contain flex-shrink-0">
                 <div>
                     <span class="block text-base font-extrabold text-slate-900 leading-tight">SIAKAD</span>
                     <span class="block text-[10px] font-bold text-blue-600 tracking-wider">SMPN 2 SUBANG</span>
