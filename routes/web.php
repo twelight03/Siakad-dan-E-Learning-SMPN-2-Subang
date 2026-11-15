@@ -8,12 +8,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $stats = [
-        'total_students' => \App\Models\Student::count(),
-        'total_teachers' => \App\Models\Teacher::count(),
-        'total_classes' => \App\Models\SchoolClass::count(),
-        'total_subjects' => \App\Models\Subject::count(),
-        'active_year' => \App\Models\AcademicYear::where('is_active', true)->first(),
+        'total_students' => 0,
+        'total_teachers' => 0,
+        'total_classes' => 0,
+        'total_subjects' => 0,
+        'active_year' => null,
     ];
+
+    try {
+        if (\Illuminate\Support\Facades\Schema::hasTable('students')) {
+            $stats['total_students'] = \App\Models\Student::count();
+            $stats['total_teachers'] = \App\Models\Teacher::count();
+            $stats['total_classes'] = \App\Models\SchoolClass::count();
+            $stats['total_subjects'] = \App\Models\Subject::count();
+            $stats['active_year'] = \App\Models\AcademicYear::where('is_active', true)->first();
+        }
+    } catch (\Throwable $e) {
+        // Fallback for tests or fresh installations
+    }
+
     return view('welcome', compact('stats'));
 });
 
