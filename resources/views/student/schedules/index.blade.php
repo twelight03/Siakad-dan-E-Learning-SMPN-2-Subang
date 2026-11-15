@@ -29,7 +29,6 @@
                     'wednesday' => 'Rabu',
                     'thursday' => 'Kamis',
                     'friday' => 'Jumat',
-                    'saturday' => 'Sabtu',
                 ];
             @endphp
 

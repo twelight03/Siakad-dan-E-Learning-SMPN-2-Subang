@@ -28,8 +28,7 @@ class ScheduleController extends Controller
                     WHEN 'wednesday' THEN 3 
                     WHEN 'thursday' THEN 4 
                     WHEN 'friday' THEN 5 
-                    WHEN 'saturday' THEN 6 
-                    ELSE 7 END")
+                    ELSE 6 END")
                 ->orderBy('start_time')
                 ->get()
                 ->groupBy('day_of_week');

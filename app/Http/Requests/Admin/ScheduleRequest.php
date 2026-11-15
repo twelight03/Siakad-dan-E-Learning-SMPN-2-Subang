@@ -17,7 +17,7 @@ class ScheduleRequest extends FormRequest
     {
         return [
             'class_subject_id' => ['required', 'exists:class_subjects,id'],
-            'day_of_week' => ['required', 'in:monday,tuesday,wednesday,thursday,friday,saturday'],
+            'day_of_week' => ['required', 'in:monday,tuesday,wednesday,thursday,friday'],
             'start_time' => ['required', 'date_format:H:i'],
             'end_time' => ['required', 'date_format:H:i', 'after:start_time'],
             'room' => ['nullable', 'string', 'max:50'],

@@ -43,11 +43,11 @@ class ScheduleController extends Controller
             $perPage = 50;
         }
 
-        $allSchedules = (clone $query)->orderByRaw("CASE day_of_week WHEN 'monday' THEN 1 WHEN 'tuesday' THEN 2 WHEN 'wednesday' THEN 3 WHEN 'thursday' THEN 4 WHEN 'friday' THEN 5 WHEN 'saturday' THEN 6 ELSE 7 END")
+        $allSchedules = (clone $query)->orderByRaw("CASE day_of_week WHEN 'monday' THEN 1 WHEN 'tuesday' THEN 2 WHEN 'wednesday' THEN 3 WHEN 'thursday' THEN 4 WHEN 'friday' THEN 5 ELSE 6 END")
             ->orderBy('start_time')
             ->get();
 
-        $schedules = (clone $query)->orderByRaw("CASE day_of_week WHEN 'monday' THEN 1 WHEN 'tuesday' THEN 2 WHEN 'wednesday' THEN 3 WHEN 'thursday' THEN 4 WHEN 'friday' THEN 5 WHEN 'saturday' THEN 6 ELSE 7 END")
+        $schedules = (clone $query)->orderByRaw("CASE day_of_week WHEN 'monday' THEN 1 WHEN 'tuesday' THEN 2 WHEN 'wednesday' THEN 3 WHEN 'thursday' THEN 4 WHEN 'friday' THEN 5 ELSE 6 END")
             ->orderBy('start_time')
             ->paginate($perPage)
             ->withQueryString();
@@ -63,7 +63,6 @@ class ScheduleController extends Controller
             'wednesday' => ['label' => 'Rabu', 'color' => 'amber', 'border' => 'border-amber-500', 'badge' => 'bg-amber-100 text-amber-800'],
             'thursday' => ['label' => 'Kamis', 'color' => 'purple', 'border' => 'border-purple-500', 'badge' => 'bg-purple-100 text-purple-800'],
             'friday' => ['label' => 'Jumat', 'color' => 'teal', 'border' => 'border-teal-500', 'badge' => 'bg-teal-100 text-teal-800'],
-            'saturday' => ['label' => 'Sabtu', 'color' => 'orange', 'border' => 'border-orange-500', 'badge' => 'bg-orange-100 text-orange-800'],
         ];
 
         return view('admin.schedules.index', compact('schedules', 'schedulesByDay', 'classes', 'academicYears', 'selectedYearId', 'daysMap'));

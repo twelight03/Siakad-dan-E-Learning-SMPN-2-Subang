@@ -37,7 +37,6 @@
                             <option value="wednesday" {{ old('day_of_week', $schedule->day_of_week) == 'wednesday' ? 'selected' : '' }}>Rabu</option>
                             <option value="thursday" {{ old('day_of_week', $schedule->day_of_week) == 'thursday' ? 'selected' : '' }}>Kamis</option>
                             <option value="friday" {{ old('day_of_week', $schedule->day_of_week) == 'friday' ? 'selected' : '' }}>Jumat</option>
-                            <option value="saturday" {{ old('day_of_week', $schedule->day_of_week) == 'saturday' ? 'selected' : '' }}>Sabtu</option>
                         </select>
                         <x-input-error class="mt-2" :messages="$errors->get('day_of_week')" />
                     </div>
