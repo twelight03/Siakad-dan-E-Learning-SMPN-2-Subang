@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+            <h2 class="font-semibold text-lg sm:text-xl text-gray-800 leading-tight">
                 {{ __('Dashboard Siswa') }}
             </h2>
-            <span class="text-sm bg-blue-100 text-blue-800 font-medium px-3 py-1 rounded-full">
+            <span class="text-xs sm:text-sm bg-blue-100 text-blue-800 font-medium px-2.5 py-1 rounded-full self-start sm:self-auto">
                 {{ $student ? $student->user->name : 'Profil Siswa' }} (NIS: {{ $student?->nis ?? '-' }}) | Kelas: {{ $currentEnrollment?->schoolClass->name ?? 'Belum ada kelas' }}
             </span>
         </div>

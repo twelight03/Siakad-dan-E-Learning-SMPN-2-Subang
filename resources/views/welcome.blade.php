@@ -9,25 +9,25 @@
 <body class="bg-gray-50 text-gray-800 antialiased font-sans">
     <div class="min-h-screen flex flex-col justify-between">
         <!-- Header -->
-        <header class="bg-white border-b border-gray-100 shadow-sm">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">
+        <header class="bg-white border-b border-gray-100 shadow-sm sticky top-0 z-20">
+            <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                <div class="flex items-center space-x-2.5 sm:space-x-3">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-extrabold text-sm sm:text-lg shadow-sm shadow-blue-200">
                         S2
                     </div>
                     <div>
-                        <div class="font-bold text-lg text-gray-900 leading-tight">SIAKAD SMPN 2 Subang</div>
-                        <div class="text-xs text-gray-500">Sistem Informasi Akademik & E-Learning</div>
+                        <div class="font-extrabold text-sm sm:text-lg text-gray-900 leading-tight">SIAKAD SMPN 2 Subang</div>
+                        <div class="text-[11px] sm:text-xs text-gray-500 hidden sm:block">Sistem Informasi Akademik & E-Learning</div>
                     </div>
                 </div>
                 <div>
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm font-semibold text-blue-600 hover:text-blue-800">
-                                Buka Dashboard &rarr;
+                            <a href="{{ url('/dashboard') }}" class="text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-800">
+                                Dashboard &rarr;
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 shadow-sm transition">
+                            <a href="{{ route('login') }}" class="px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg text-xs sm:text-sm font-semibold hover:bg-blue-700 shadow-sm transition whitespace-nowrap">
                                 Masuk ke Sistem
                             </a>
                         @endauth

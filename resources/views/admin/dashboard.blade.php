@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+            <h2 class="font-semibold text-lg sm:text-xl text-gray-800 leading-tight">
                 {{ __('Dashboard Administrator') }}
             </h2>
-            <span class="text-sm bg-blue-100 text-blue-800 font-medium px-3 py-1 rounded-full">
+            <span class="text-xs sm:text-sm bg-blue-100 text-blue-800 font-medium px-2.5 py-1 rounded-full self-start sm:self-auto">
                 Tahun Ajaran: {{ $stats['active_academic_year']->name ?? 'Belum ada tahun aktif' }} ({{ $stats['active_academic_year']?->semester == 'odd' ? 'Ganjil' : 'Genap' }})
             </span>
         </div>
@@ -12,7 +12,7 @@
 
     <div class="p-4 sm:p-6 w-full space-y-4">
             <!-- Stat Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-blue-500">
                     <div class="text-sm font-medium text-gray-500">Total Siswa</div>
                     <div class="mt-2 text-3xl font-bold text-gray-900">{{ $stats['total_students'] }}</div>

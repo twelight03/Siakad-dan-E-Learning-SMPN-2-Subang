@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+            <h2 class="font-semibold text-lg sm:text-xl text-gray-800 leading-tight">
                 {{ __('Dashboard Guru') }}
             </h2>
-            <span class="text-sm bg-green-100 text-green-800 font-medium px-3 py-1 rounded-full">
+            <span class="text-xs sm:text-sm bg-green-100 text-green-800 font-medium px-2.5 py-1 rounded-full self-start sm:self-auto">
                 {{ $teacher ? $teacher->user->name : 'Profil Guru' }} (NIP: {{ $teacher?->nip ?? '-' }})
             </span>
         </div>

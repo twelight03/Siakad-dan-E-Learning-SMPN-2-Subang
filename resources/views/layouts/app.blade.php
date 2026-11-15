@@ -17,7 +17,7 @@
     <body 
         class="h-full font-sans antialiased text-slate-800 bg-slate-50 selection:bg-blue-600 selection:text-white overflow-hidden" 
         x-data="{ 
-            sidebarOpen: localStorage.getItem('siakad_sidebar') !== 'closed',
+            sidebarOpen: window.innerWidth >= 1024 ? (localStorage.getItem('siakad_sidebar') !== 'closed') : false,
             isMobile: window.innerWidth < 1024,
             toggleSidebar() {
                 this.sidebarOpen = !this.sidebarOpen;
@@ -26,7 +26,7 @@
                 }
             }
         }"
-        @resize.window="isMobile = window.innerWidth < 1024">
+        @resize.window="isMobile = window.innerWidth < 1024; if(isMobile && sidebarOpen) { sidebarOpen = false; }">
         
         <div class="flex h-screen w-screen overflow-hidden bg-slate-50">
             <!-- Sidebar Navigation (Collapsible / Toggleable) -->

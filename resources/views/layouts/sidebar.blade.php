@@ -39,7 +39,7 @@
         </div>
 
         <!-- Menu Navigation List -->
-        <nav class="p-3 space-y-1">
+        <nav class="p-3 space-y-1" @click="if(isMobile) sidebarOpen = false">
             @if(Auth::user()->isAdmin())
                 <div class="px-3 pt-2 pb-1 text-[11px] font-bold tracking-wider text-slate-400 uppercase">
                     Menu Utama
