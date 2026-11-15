@@ -224,4 +224,56 @@ class ScheduleTest extends TestCase
         $response->assertRedirect();
         $this->assertDatabaseMissing('schedules', ['id' => $schedule->id]);
     }
+
+    public function test_admin_can_view_schedule_settings_page(): void
+    {
+        $admin = User::factory()->admin()->create();
+
+        $response = $this->actingAs($admin)->get(route('admin.schedules.settings'));
+
+        $response->assertStatus(200);
+        $response->assertSee('Pengaturan Waktu KBM & Jam Istirahat');
+        $response->assertSee('Durasi 1 JP (Menit)');
+    }
+
+    public function test_admin_can_update_schedule_settings(): void
+    {
+        $admin = User::factory()->admin()->create();
+
+        $response = $this->actingAs($admin)->post(route('admin.schedules.settings.update'), [
+            'lesson_duration' => 45,
+            'start_time' => '07:15',
+            'end_time' => '14:30',
+            'friday_end_time' => '11:30',
+            'recess_names' => ['Istirahat Pagi', 'Ishoma'],
+            'recess_starts' => ['09:45', '12:00'],
+            'recess_ends' => ['10:15', '12:45'],
+            'friday_recess_names' => ['Istirahat Jumat'],
+            'friday_recess_starts' => ['09:15'],
+            'friday_recess_ends' => ['09:35'],
+        ]);
+
+        $response->assertRedirect(route('admin.schedules.index'));
+        $response->assertSessionHas('success');
+
+        $this->assertEquals(45, \App\Models\ScheduleSetting::get('lesson_duration'));
+        $this->assertEquals('07:15', \App\Models\ScheduleSetting::get('start_time'));
+        $this->assertEquals('14:30', \App\Models\ScheduleSetting::get('end_time'));
+    }
+
+    public function test_admin_can_view_hierarchical_grade_and_class_tabs(): void
+    {
+        $admin = User::factory()->admin()->create();
+        $data = $this->setupAcademicData();
+
+        $response = $this->actingAs($admin)->get(route('admin.schedules.index', [
+            'grade_level' => '7',
+            'class_id' => $data['classA']->id,
+        ]));
+
+        $response->assertStatus(200);
+        $response->assertSee('Tingkat VII');
+        $response->assertSee('Kelas VII-A');
+        $response->assertSee('Matriks Jadwal Mingguan');
+    }
 }

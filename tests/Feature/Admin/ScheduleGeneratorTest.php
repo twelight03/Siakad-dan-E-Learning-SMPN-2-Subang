@@ -92,14 +92,14 @@ class ScheduleGeneratorTest extends TestCase
             'class_subject_id' => $cs2->id,
         ]);
 
-        // Verify grade 7 vs grade 8 starting time slots are different
+        // Verify schedules are created with standard school start time
         $sched7 = Schedule::where('class_subject_id', $cs1->id)->first();
         $sched8 = Schedule::where('class_subject_id', $cs2->id)->first();
 
         $this->assertNotNull($sched7);
         $this->assertNotNull($sched8);
-        $this->assertEquals('07:15', substr($sched7->start_time, 0, 5));
-        $this->assertEquals('07:30', substr($sched8->start_time, 0, 5));
+        $this->assertEquals('07:00', substr($sched7->start_time, 0, 5));
+        $this->assertEquals('07:00', substr($sched8->start_time, 0, 5));
     }
 
     public function test_auto_generator_respects_teacher_max_hours_limit(): void

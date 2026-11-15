@@ -256,52 +256,34 @@ class ScheduleGeneratorController extends Controller
     }
 
     /**
-     * Define realistic time slots tailored for each grade level (7, 8, 9).
-     * Reflects authentic Indonesian SMP schedules with rolling periods.
+     * Define realistic time slots based on operator schedule settings.
+     * All grade levels standard 07:00 - 14:00 WIB (Friday 11:15) with operator-configured recesses.
      */
     private function getTimeSlotsForGrade(string $gradeLevel): array
     {
-        $level = trim($gradeLevel);
+        $timelineMonday = \App\Models\ScheduleSetting::getDayTimeline('monday');
+        $timelineFriday = \App\Models\ScheduleSetting::getDayTimeline('friday');
 
-        if ($level === '7') {
-            // Tingkat 7: Slot KBM 80 Menit per Pertemuan (2 Jam Pelajaran)
-            $seninKamis = [
-                ['start' => '07:15', 'end' => '08:35', 'label' => 'Jam 1-2'],
-                ['start' => '08:35', 'end' => '09:55', 'label' => 'Jam 3-4'],
-                ['start' => '10:20', 'end' => '11:40', 'label' => 'Jam 5-6 (Pasca Istirahat)'],
-                ['start' => '12:20', 'end' => '13:40', 'label' => 'Jam 7-8 (Pasca Dhuhur)'],
-            ];
-            $jumat = [
-                ['start' => '07:00', 'end' => '08:20', 'label' => 'Jam 1-2'],
-                ['start' => '08:20', 'end' => '09:40', 'label' => 'Jam 3-4'],
-                ['start' => '10:00', 'end' => '11:15', 'label' => 'Jam 5-6 (Jumat Pendek)'],
-            ];
-        } elseif ($level === '8') {
-            // Tingkat 8: Waktu bergeser 10-15 menit (rolling recess agar tidak menumpuk)
-            $seninKamis = [
-                ['start' => '07:30', 'end' => '08:50', 'label' => 'Jam 1-2'],
-                ['start' => '08:50', 'end' => '10:10', 'label' => 'Jam 3-4'],
-                ['start' => '10:35', 'end' => '11:55', 'label' => 'Jam 5-6'],
-                ['start' => '12:35', 'end' => '13:55', 'label' => 'Jam 7-8'],
-            ];
-            $jumat = [
-                ['start' => '07:10', 'end' => '08:30', 'label' => 'Jam 1-2'],
-                ['start' => '08:30', 'end' => '09:50', 'label' => 'Jam 3-4'],
-                ['start' => '10:05', 'end' => '11:20', 'label' => 'Jam 5-6'],
-            ];
-        } else {
-            // Tingkat 9: Dimulai lebih pagi jam 07:00
-            $seninKamis = [
-                ['start' => '07:00', 'end' => '08:20', 'label' => 'Jam 1-2 (Fase Intensif)'],
-                ['start' => '08:20', 'end' => '09:40', 'label' => 'Jam 3-4'],
-                ['start' => '10:00', 'end' => '11:20', 'label' => 'Jam 5-6'],
-                ['start' => '12:00', 'end' => '13:20', 'label' => 'Jam 7-8'],
-            ];
-            $jumat = [
-                ['start' => '07:00', 'end' => '08:15', 'label' => 'Jam 1-2'],
-                ['start' => '08:15', 'end' => '09:30', 'label' => 'Jam 3-4'],
-                ['start' => '09:45', 'end' => '11:00', 'label' => 'Jam 5-6'],
-            ];
+        $seninKamis = [];
+        foreach ($timelineMonday as $item) {
+            if ($item['type'] === 'period') {
+                $seninKamis[] = [
+                    'start' => $item['start_time'],
+                    'end' => $item['end_time'],
+                    'label' => $item['name'],
+                ];
+            }
+        }
+
+        $jumat = [];
+        foreach ($timelineFriday as $item) {
+            if ($item['type'] === 'period') {
+                $jumat[] = [
+                    'start' => $item['start_time'],
+                    'end' => $item['end_time'],
+                    'label' => $item['name'],
+                ];
+            }
         }
 
         return [
