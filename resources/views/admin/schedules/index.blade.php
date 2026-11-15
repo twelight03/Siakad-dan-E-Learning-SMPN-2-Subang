@@ -150,14 +150,29 @@
                 </div>
             @else
                 <div class="p-4 sm:p-5">
-                    <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center justify-between mb-3 no-print">
                         <h3 class="text-sm font-extrabold text-slate-900 flex items-center">
                             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 me-2"></span>
                             Matriks Jadwal Mingguan: Kelas {{ $selectedClass->name }} (Tingkat {{ $selectedGrade }})
                         </h3>
-                        <span class="text-xs text-slate-500 font-semibold">
-                            Total Terjadwal: <strong>{{ $matrixSchedules->count() }}</strong> Jam Pertemuan
-                        </span>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="window.print()" type="button" class="px-3 py-1.5 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-lg shadow-2xs flex items-center transition cursor-pointer">
+                                <svg class="w-4 h-4 me-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                                </svg>
+                                Cetak Jadwal Kelas
+                            </button>
+                            <span class="text-xs text-slate-500 font-semibold">
+                                Total: <strong>{{ $matrixSchedules->count() }}</strong> Jam Pertemuan
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Print Only Header -->
+                    <div class="hidden print-only mb-4 text-center border-b pb-3">
+                        <h2 class="text-lg font-black uppercase text-slate-900">SMP NEGERI 2 SUBANG</h2>
+                        <h3 class="text-sm font-bold text-slate-700">JADWAL PELAJARAN KELAS {{ $selectedClass->name }} — TAHUN AJARAN {{ $academicYears->firstWhere('id', $selectedYearId)?->name ?? '' }}</h3>
+                        <p class="text-xs text-slate-500">Wali Kelas: {{ $selectedClass->homeroomTeacher?->user->name ?? 'Belum ditentukan' }} &bull; KBM: 07:00 – 14:00 WIB</p>
                     </div>
 
                     <!-- Weekly Timetable Matrix Grid -->
@@ -413,4 +428,30 @@
         </div>
 
     </div>
+
+    <style>
+        @media print {
+            nav, header, .no-print, [x-data] button, form, .border-b.bg-slate-50\/50, .border-b.border-slate-200 {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+            }
+            th, td {
+                border: 1px solid #cbd5e1 !important;
+                padding: 6px !important;
+            }
+            .bg-blue-50\/30, .bg-slate-50, .bg-amber-50\/80 {
+                background: transparent !important;
+            }
+        }
+    </style>
 </x-app-layout>

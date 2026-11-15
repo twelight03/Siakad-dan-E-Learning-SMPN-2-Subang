@@ -17,10 +17,10 @@ class ScheduleController extends Controller
         $schedules = collect();
 
         if ($currentEnrollment) {
-            $schedules = Schedule::with(['classSubject.subject', 'classSubject.teacher.user', 'schoolClass'])
-                ->where('class_id', $currentEnrollment->class_id)
+            $schedules = Schedule::with(['classSubject.subject', 'classSubject.teacher.user', 'classSubject.schoolClass'])
                 ->whereHas('classSubject', function ($q) use ($currentEnrollment) {
-                    $q->where('academic_year_id', $currentEnrollment->academic_year_id);
+                    $q->where('class_id', $currentEnrollment->class_id)
+                        ->where('academic_year_id', $currentEnrollment->academic_year_id);
                 })
                 ->orderByRaw("CASE day_of_week 
                     WHEN 'monday' THEN 1 

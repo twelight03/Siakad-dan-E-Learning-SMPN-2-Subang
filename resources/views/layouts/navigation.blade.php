@@ -41,6 +41,9 @@
                         <x-nav-link :href="Route::has('admin.schedules.index') ? route('admin.schedules.index') : '#'" :active="request()->routeIs('admin.schedules.*')">
                             Jadwal
                         </x-nav-link>
+                        <x-nav-link :href="Route::has('admin.promotions.index') ? route('admin.promotions.index') : '#'" :active="request()->routeIs('admin.promotions.*')">
+                            Kenaikan Kelas
+                        </x-nav-link>
                         <x-nav-link :href="Route::has('admin.reports.index') ? route('admin.reports.index') : '#'" :active="request()->routeIs('admin.reports.*')">
                             Laporan
                         </x-nav-link>
@@ -62,6 +65,9 @@
                         </x-nav-link>
                         <x-nav-link :href="Route::has('teacher.assignments.index') ? route('teacher.assignments.index') : '#'" :active="request()->routeIs('teacher.assignments.*')">
                             Tugas
+                        </x-nav-link>
+                        <x-nav-link :href="Route::has('teacher.groups.index') ? route('teacher.groups.index') : '#'" :active="request()->routeIs('teacher.groups.*')">
+                            Acak Kelompok
                         </x-nav-link>
                     @elseif(Auth::user()->isStudent())
                         <x-nav-link :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')">
@@ -168,6 +174,9 @@
                 <x-responsive-nav-link :href="Route::has('admin.schedules.index') ? route('admin.schedules.index') : '#'" :active="request()->routeIs('admin.schedules.*')">
                     Jadwal Pelajaran
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="Route::has('admin.promotions.index') ? route('admin.promotions.index') : '#'" :active="request()->routeIs('admin.promotions.*')">
+                    Kenaikan Kelas
+                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="Route::has('admin.reports.index') ? route('admin.reports.index') : '#'" :active="request()->routeIs('admin.reports.*')">
                     Laporan
                 </x-responsive-nav-link>
@@ -189,6 +198,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="Route::has('teacher.assignments.index') ? route('teacher.assignments.index') : '#'" :active="request()->routeIs('teacher.assignments.*')">
                     Tugas
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="Route::has('teacher.groups.index') ? route('teacher.groups.index') : '#'" :active="request()->routeIs('teacher.groups.*')">
+                    Acak Kelompok
                 </x-responsive-nav-link>
             @elseif(Auth::user()->isStudent())
                 <x-responsive-nav-link :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')">
