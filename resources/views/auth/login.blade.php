@@ -1,31 +1,33 @@
 <x-guest-layout>
-    <div class="relative min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-slate-50">
+    <div class="min-h-screen flex flex-col bg-slate-50">
         
-        <!-- Top Left: Back to Home Button -->
-        <div class="absolute top-4 left-4 sm:top-6 sm:left-6">
-            <a href="{{ url('/') }}" class="inline-flex items-center px-3.5 py-1.5 text-xs font-semibold text-slate-600 hover:text-blue-800 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 shadow-2xs transition group">
-                <svg class="w-4 h-4 me-1.5 text-slate-400 group-hover:text-blue-800 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        <!-- Top Bar: Tombol Kembali ke Beranda di Pojok Kiri Atas -->
+        <header class="w-full px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-start">
+            <a href="{{ url('/') }}" class="inline-flex items-center px-3.5 py-2 text-xs font-bold text-slate-700 hover:text-blue-800 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 shadow-2xs transition group">
+                <svg class="w-4 h-4 me-1.5 text-slate-500 group-hover:text-blue-800 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                 </svg>
-                Kembali ke Beranda
+                <span>Kembali ke Beranda</span>
             </a>
-        </div>
+        </header>
 
-        <!-- School Header -->
-        <div class="w-full max-w-md mb-6 text-center">
-            <!-- Logo & Title -->
-            <div class="flex flex-col items-center">
-                <img src="{{ asset('images/logo-smpn2.png') }}" 
-                     alt="Logo SMP Negeri 2 Subang" 
-                     class="w-16 h-16 object-contain mb-3 drop-shadow-xs">
-                <h1 class="text-xl font-bold text-slate-900 tracking-tight">
-                    SMP NEGERI 2 SUBANG
-                </h1>
-                <p class="text-xs text-slate-500 mt-0.5">
-                    Sistem Informasi Akademik & E-Learning
-                </p>
+        <!-- Centered Main Content -->
+        <main class="flex-1 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 pb-12">
+            <!-- School Header -->
+            <div class="w-full max-w-md mb-6 text-center">
+                <!-- Logo & Title -->
+                <div class="flex flex-col items-center">
+                    <img src="{{ asset('images/logo-smpn2.png') }}" 
+                         alt="Logo SMP Negeri 2 Subang" 
+                         class="w-16 h-16 object-contain mb-3 drop-shadow-xs">
+                    <h1 class="text-xl font-bold text-slate-900 tracking-tight">
+                        SMP NEGERI 2 SUBANG
+                    </h1>
+                    <p class="text-xs text-slate-500 mt-0.5">
+                        Sistem Informasi Akademik & E-Learning
+                    </p>
+                </div>
             </div>
-        </div>
 
         <!-- Clean Login Card -->
         <div class="w-full max-w-md bg-white border border-slate-200/80 rounded-2xl shadow-sm p-6 sm:p-8" x-data="{ showPassword: false }">
@@ -159,5 +161,6 @@
         <div class="mt-8 text-center text-xs text-slate-400">
             &copy; {{ date('Y') }} SMP Negeri 2 Subang. Hak Cipta Dilindungi.
         </div>
-    </div>
+    </main>
+</div>
 </x-guest-layout>
