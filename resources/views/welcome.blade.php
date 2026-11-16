@@ -52,16 +52,16 @@
                 <img 
                     src="{{ asset('images/logo-smpn2.png') }}" 
                     alt="Logo SMP Negeri 2 Subang" 
-                    class="h-11 sm:h-13 w-auto object-contain flex-shrink-0 group-hover:scale-105 transition-transform"
+                    class="h-9 sm:h-10 w-auto object-contain flex-shrink-0 group-hover:scale-105 transition-transform"
                 />
                 <div>
-                    <h1 class="text-base sm:text-lg font-black text-slate-950 tracking-tight leading-none group-hover:text-blue-800 transition-colors">
+                    <h1 class="text-sm sm:text-base font-black text-slate-950 tracking-tight leading-none group-hover:text-blue-800 transition-colors">
                         SMP NEGERI 2 SUBANG
                     </h1>
-                    <p class="text-xs font-extrabold text-blue-800 mt-0.5 tracking-wide">
+                    <p class="text-[11px] sm:text-xs font-extrabold text-blue-800 mt-0.5 tracking-wide">
                         Sistem Informasi Akademik & E-Learning (SIAKAD)
                     </p>
-                    <p class="text-[11px] text-slate-500 font-medium hidden xl:block">
+                    <p class="text-[10px] text-slate-500 font-medium hidden xl:block mt-0.5">
                         Jl. Raya Pamulihan - Tangkolo, Kec. Subang, Kab. Kuningan, Jawa Barat
                     </p>
                 </div>
@@ -569,7 +569,7 @@
                 <!-- Col 1: School Identity -->
                 <div class="space-y-3.5 md:col-span-1">
                     <div class="flex items-center space-x-3">
-                        <img src="{{ asset('images/logo-smpn2.png') }}" alt="Logo SMP Negeri 2 Subang" class="h-12 w-auto object-contain">
+                        <img src="{{ asset('images/logo-smpn2.png') }}" alt="Logo SMP Negeri 2 Subang" class="h-10 w-auto object-contain">
                         <div>
                             <span class="font-black text-white text-sm block">SMP Negeri 2 Subang</span>
                             <span class="text-slate-300 text-[11px] font-medium">Kabupaten Kuningan, Jawa Barat</span>
