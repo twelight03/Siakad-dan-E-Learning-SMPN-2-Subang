@@ -61,6 +61,12 @@
                         <div class="font-semibold text-sm">Penempatan Siswa</div>
                     </a>
                 </div>
+                <div class="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                    <span class="text-xs text-slate-500 font-medium">Kustomisasi Informasi Publik:</span>
+                    <a href="{{ route('admin.school-profile.index') }}" class="inline-flex items-center px-3.5 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold transition">
+                        <span class="me-1.5">🏛️</span> Pengaturan Data Pokok Dapodik & Profil Sekolah &rarr;
+                    </a>
+                </div>
             </div>
 
             <!-- Visual Charts -->

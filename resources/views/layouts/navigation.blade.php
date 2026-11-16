@@ -44,6 +44,9 @@
                         <x-nav-link :href="Route::has('admin.promotions.index') ? route('admin.promotions.index') : '#'" :active="request()->routeIs('admin.promotions.*')">
                             Kenaikan Kelas
                         </x-nav-link>
+                        <x-nav-link :href="Route::has('admin.school-profile.index') ? route('admin.school-profile.index') : '#'" :active="request()->routeIs('admin.school-profile.*')">
+                            Data Pokok
+                        </x-nav-link>
                         <x-nav-link :href="Route::has('admin.reports.index') ? route('admin.reports.index') : '#'" :active="request()->routeIs('admin.reports.*')">
                             Laporan
                         </x-nav-link>
@@ -176,6 +179,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="Route::has('admin.promotions.index') ? route('admin.promotions.index') : '#'" :active="request()->routeIs('admin.promotions.*')">
                     Kenaikan Kelas
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="Route::has('admin.school-profile.index') ? route('admin.school-profile.index') : '#'" :active="request()->routeIs('admin.school-profile.*')">
+                    Data Pokok Sekolah
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="Route::has('admin.reports.index') ? route('admin.reports.index') : '#'" :active="request()->routeIs('admin.reports.*')">
                     Laporan

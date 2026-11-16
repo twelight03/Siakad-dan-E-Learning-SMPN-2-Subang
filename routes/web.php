@@ -7,25 +7,18 @@ use App\Http\Controllers\Teacher\DashboardController as TeacherDashboardControll
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $stats = [
-        'total_students' => 0,
-        'total_teachers' => 0,
-        'total_classes' => 0,
-        'total_subjects' => 0,
-        'active_year' => null,
-    ];
+    $dapodik = \App\Models\SchoolSetting::getDapodikStats();
 
+    $activeYear = null;
     try {
-        if (\Illuminate\Support\Facades\Schema::hasTable('students')) {
-            $stats['total_students'] = \App\Models\Student::count();
-            $stats['total_teachers'] = \App\Models\Teacher::count();
-            $stats['total_classes'] = \App\Models\SchoolClass::count();
-            $stats['total_subjects'] = \App\Models\Subject::count();
-            $stats['active_year'] = \App\Models\AcademicYear::where('is_active', true)->first();
+        if (\Illuminate\Support\Facades\Schema::hasTable('academic_years')) {
+            $activeYear = \App\Models\AcademicYear::where('is_active', true)->first();
         }
     } catch (\Throwable $e) {
         // Fallback for tests or fresh installations
     }
+
+    $stats = array_merge($dapodik, ['active_year' => $activeYear]);
 
     return view('welcome', compact('stats'));
 });
@@ -75,6 +68,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('reports/attendances', [\App\Http\Controllers\Admin\ReportController::class, 'attendances'])->name('reports.attendances');
     Route::get('reports/grades', [\App\Http\Controllers\Admin\ReportController::class, 'grades'])->name('reports.grades');
     Route::get('reports/assignments', [\App\Http\Controllers\Admin\ReportController::class, 'assignments'])->name('reports.assignments');
+    Route::get('school-profile', [\App\Http\Controllers\Admin\SchoolProfileController::class, 'index'])->name('school-profile.index');
+    Route::post('school-profile', [\App\Http\Controllers\Admin\SchoolProfileController::class, 'update'])->name('school-profile.update');
 });
 
 // Teacher Routes

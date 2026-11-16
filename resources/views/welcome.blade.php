@@ -31,9 +31,9 @@
                 </span>
             </div>
             <div class="flex items-center flex-wrap justify-center space-x-3 text-[11px] text-slate-300">
-                <span>NPSN: <strong class="text-white font-mono">20212952</strong></span>
+                <span>NPSN: <strong class="text-white font-mono">{{ $stats['npsn'] ?? '20212952' }}</strong></span>
                 <span class="text-slate-600">&bull;</span>
-                <span>Akreditasi: <strong class="text-amber-300 font-bold">A (Unggul)</strong></span>
+                <span>Akreditasi: <strong class="text-amber-300 font-bold">{{ $stats['accreditation'] ?? 'A (Unggul)' }}</strong></span>
                 <span class="text-slate-600">&bull;</span>
                 <span>Status: <strong class="text-white">Negeri</strong></span>
                 <span class="text-slate-600">&bull;</span>
@@ -220,7 +220,7 @@
                         <div class="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-4xl shadow-md border-4 border-amber-400 mb-3">
                             🏛️
                         </div>
-                        <h4 class="font-black text-sm text-slate-900">Kepala Sekolah</h4>
+                        <h4 class="font-black text-sm text-slate-900">{{ $stats['principal_name'] ?? 'Kepala Sekolah' }}</h4>
                         <p class="text-xs text-blue-800 font-bold">SMP Negeri 2 Subang</p>
                         <p class="text-[11px] text-slate-600 mt-0.5">Dinas Pendidikan Kab. Kuningan</p>
                     </div>
@@ -233,7 +233,7 @@
                             "Mewujudkan Tata Kelola Pendidikan yang Transparan, Akuntabel, dan Berkarakter"
                         </h3>
                         <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
-                            &ldquo;Penerapan Sistem Informasi Akademik (SIAKAD) ini merupakan langkah strategis SMP Negeri 2 Subang dalam mendigitalisasi layanan pendidikan. Melalui platform ini, kami memastikan keterbukaan informasi capaian belajar siswa, ketertiban administrasi mengajar dewan guru, serta kemudahan orang tua dalam mendampingi perkembangan putra-putrinya menuju insan yang cerdas dan berakhlak mulia.&rdquo;
+                            &ldquo;{{ $stats['principal_speech'] ?? 'Penerapan Sistem Informasi Akademik (SIAKAD) ini merupakan langkah strategis SMP Negeri 2 Subang dalam mendigitalisasi layanan pendidikan. Melalui platform ini, kami memastikan keterbukaan informasi capaian belajar siswa, ketertiban administrasi mengajar dewan guru, serta kemudahan orang tua dalam mendampingi perkembangan putra-putrinya menuju insan yang cerdas dan berakhlak mulia.' }}&rdquo;
                         </p>
                         <div class="pt-2 flex flex-wrap items-center gap-3 text-xs font-bold text-slate-800">
                             <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300">
@@ -399,37 +399,37 @@
                 <!-- Stat 1 -->
                 <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 shadow-xs text-center hover:border-blue-600 transition group">
                     <div class="text-3xl sm:text-4xl font-black text-blue-800 font-mono group-hover:scale-105 transition-transform">
-                        {{ $stats['total_students'] ?? 0 }}
+                        {{ $stats['total_students'] ?? 648 }}
                     </div>
                     <div class="text-sm font-black text-slate-900 mt-2">Peserta Didik</div>
-                    <div class="text-[11px] text-slate-600 font-semibold">Siswa aktif terdaftar</div>
+                    <div class="text-[11px] text-slate-600 font-semibold">{{ $stats['students_label'] ?? 'Siswa aktif terdaftar' }}</div>
                 </div>
 
                 <!-- Stat 2 -->
                 <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 shadow-xs text-center hover:border-emerald-600 transition group">
                     <div class="text-3xl sm:text-4xl font-black text-emerald-700 font-mono group-hover:scale-105 transition-transform">
-                        {{ $stats['total_teachers'] ?? 0 }}
+                        {{ $stats['total_teachers'] ?? 38 }}
                     </div>
                     <div class="text-sm font-black text-slate-900 mt-2">Tenaga Pendidik</div>
-                    <div class="text-[11px] text-slate-600 font-semibold">Guru pengampu bersertifikasi</div>
+                    <div class="text-[11px] text-slate-600 font-semibold">{{ $stats['teachers_label'] ?? 'Guru pengampu bersertifikasi' }}</div>
                 </div>
 
                 <!-- Stat 3 -->
                 <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 shadow-xs text-center hover:border-indigo-600 transition group">
                     <div class="text-3xl sm:text-4xl font-black text-indigo-700 font-mono group-hover:scale-105 transition-transform">
-                        {{ $stats['total_classes'] ?? 0 }}
+                        {{ $stats['total_classes'] ?? 18 }}
                     </div>
                     <div class="text-sm font-black text-slate-900 mt-2">Rombel Kelas</div>
-                    <div class="text-[11px] text-slate-600 font-semibold">Tingkat VII, VIII, dan IX</div>
+                    <div class="text-[11px] text-slate-600 font-semibold">{{ $stats['classes_label'] ?? 'Tingkat VII, VIII, dan IX' }}</div>
                 </div>
 
                 <!-- Stat 4 -->
                 <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 shadow-xs text-center hover:border-amber-600 transition group">
                     <div class="text-3xl sm:text-4xl font-black text-amber-700 font-mono group-hover:scale-105 transition-transform">
-                        {{ $stats['total_subjects'] ?? 0 }}
+                        {{ $stats['total_subjects'] ?? 11 }}
                     </div>
                     <div class="text-sm font-black text-slate-900 mt-2">Mata Pelajaran</div>
-                    <div class="text-[11px] text-slate-600 font-semibold">Kurikulum Nasional</div>
+                    <div class="text-[11px] text-slate-600 font-semibold">{{ $stats['subjects_label'] ?? 'Kurikulum Nasional' }}</div>
                 </div>
             </div>
         </div>
@@ -584,11 +584,9 @@
                 <div class="space-y-2.5">
                     <h5 class="font-black text-amber-300 text-sm mb-3 uppercase tracking-wider">Alamat & Kontak Resmi</h5>
                     <p class="leading-relaxed text-slate-200 font-medium">
-                        <strong>Kampus:</strong> Jl. Raya Pamulihan - Tangkolo<br>
-                        <strong>Kecamatan:</strong> Subang<br>
-                        <strong>Kabupaten:</strong> Kuningan, Jawa Barat 45566<br>
-                        <strong>Email TU:</strong> tu@smpn2subang.sch.id<br>
-                        <strong>Helpdesk WA:</strong> (0232) 8892-SMPN2
+                        <strong>Kampus:</strong> {{ $stats['school_address'] ?? 'Jl. Raya Pamulihan - Tangkolo, Kec. Subang, Kab. Kuningan' }}<br>
+                        <strong>Email TU:</strong> {{ $stats['school_email'] ?? 'tu@smpn2subang.sch.id' }}<br>
+                        <strong>Helpdesk WA:</strong> {{ $stats['school_phone'] ?? '(0232) 8892-SMPN2' }}
                     </p>
                 </div>
 
@@ -596,9 +594,9 @@
                 <div class="space-y-2.5">
                     <h5 class="font-black text-amber-300 text-sm mb-3 uppercase tracking-wider">Identitas Satuan Pendidikan</h5>
                     <p class="leading-relaxed text-slate-200 font-medium">
-                        <strong>NPSN:</strong> 20212952<br>
+                        <strong>NPSN:</strong> {{ $stats['npsn'] ?? '20212952' }}<br>
                         <strong>Bentuk Pendidikan:</strong> SMP Negeri<br>
-                        <strong>Status:</strong> Terakreditasi A (Unggul)<br>
+                        <strong>Status:</strong> Terakreditasi {{ $stats['accreditation'] ?? 'A (Unggul)' }}<br>
                         <strong>Naungan:</strong> Disdikbud Kabupaten Kuningan
                     </p>
                 </div>
