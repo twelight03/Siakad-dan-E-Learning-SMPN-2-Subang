@@ -46,29 +46,29 @@
 
     <!-- 2. MAIN SCHOOL HEADER (KOP RESMI & NAVIGASI) -->
     <header class="bg-white border-b-2 border-slate-200 shadow-xs sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
             <!-- School Brand with Real Official Logo -->
-            <a href="{{ url('/') }}" class="flex items-center space-x-3.5 group">
+            <a href="{{ url('/') }}" class="flex items-center space-x-3 group flex-shrink-0">
                 <img 
                     src="{{ asset('images/logo-smpn2.png') }}" 
                     alt="Logo SMP Negeri 2 Subang" 
-                    class="h-12 sm:h-14 w-auto object-contain flex-shrink-0 group-hover:scale-105 transition-transform"
+                    class="h-11 sm:h-13 w-auto object-contain flex-shrink-0 group-hover:scale-105 transition-transform"
                 />
                 <div>
-                    <h1 class="text-base sm:text-xl font-black text-slate-950 tracking-tight leading-none group-hover:text-blue-800 transition-colors">
+                    <h1 class="text-base sm:text-lg font-black text-slate-950 tracking-tight leading-none group-hover:text-blue-800 transition-colors">
                         SMP NEGERI 2 SUBANG
                     </h1>
-                    <p class="text-xs sm:text-sm font-extrabold text-blue-800 mt-0.5 tracking-wide">
+                    <p class="text-xs font-extrabold text-blue-800 mt-0.5 tracking-wide">
                         Sistem Informasi Akademik & E-Learning (SIAKAD)
                     </p>
-                    <p class="text-[11px] text-slate-600 font-medium hidden md:block">
+                    <p class="text-[11px] text-slate-500 font-medium hidden xl:block">
                         Jl. Raya Pamulihan - Tangkolo, Kec. Subang, Kab. Kuningan, Jawa Barat
                     </p>
                 </div>
             </a>
 
             <!-- Navigation Links (Desktop) -->
-            <nav class="hidden lg:flex items-center space-x-6 text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <nav class="hidden lg:flex items-center space-x-4 xl:space-x-6 text-xs font-bold text-slate-700 uppercase tracking-wider flex-shrink-0">
                 <a href="#beranda" class="hover:text-blue-800 transition">Beranda</a>
                 <a href="#sambutan" class="hover:text-blue-800 transition">Sambutan</a>
                 <a href="#pengumuman" class="hover:text-blue-800 transition">Pengumuman</a>
@@ -77,11 +77,11 @@
                 <a href="#kontak" class="hover:text-blue-800 transition">Kontak</a>
             </nav>
 
-            <!-- Right Action (Masuk / Dashboard) -->
-            <div class="flex items-center space-x-2.5">
+            <!-- Right Action (Login / Dashboard) -->
+            <div class="flex items-center space-x-2.5 flex-shrink-0">
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center px-4 sm:px-5 py-2.5 bg-blue-800 hover:bg-blue-900 text-white rounded-lg text-xs sm:text-sm font-extrabold shadow-sm transition">
+                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center justify-center px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg text-xs sm:text-sm font-bold shadow-xs transition whitespace-nowrap flex-shrink-0 h-9 sm:h-10">
                             <span>Buka Dashboard</span>
                             <svg class="w-4 h-4 ms-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -89,15 +89,15 @@
                         </a>
                     @else
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="hidden sm:inline-flex items-center px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-lg text-xs sm:text-sm font-bold transition border border-slate-300">
+                            <a href="{{ route('register') }}" class="hidden sm:inline-flex items-center justify-center px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg text-xs sm:text-sm font-bold transition border border-slate-300 whitespace-nowrap flex-shrink-0 h-9 sm:h-10">
                                 <span>Pendaftaran Siswa</span>
                             </a>
                         @endif
-                        <a href="{{ route('login') }}" class="inline-flex items-center px-4 sm:px-5 py-2.5 bg-blue-800 hover:bg-blue-900 text-white rounded-lg text-xs sm:text-sm font-black shadow-sm transition">
+                        <a href="{{ route('login') }}" class="inline-flex items-center justify-center px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg text-xs sm:text-sm font-bold shadow-xs transition whitespace-nowrap flex-shrink-0 h-9 sm:h-10">
                             <svg class="w-4 h-4 me-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
                             </svg>
-                            <span>Masuk Portal</span>
+                            <span>Login</span>
                         </a>
                     @endauth
                 @endif
