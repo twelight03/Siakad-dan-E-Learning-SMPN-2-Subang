@@ -8,7 +8,7 @@
                 <p class="text-xs text-slate-500 mt-0.5">Konfigurasi durasi 1 JP, jam masuk/pulang KBM, dan sesi istirahat sekolah yang berlaku untuk seluruh tingkatan kelas.</p>
             </div>
             <a href="{{ route('admin.schedules.index') }}" class="text-xs text-slate-600 hover:text-blue-700 font-bold flex items-center transition">
-                ← Kembali ke Jadwal Pelajaran
+                Kembali ke Jadwal Pelajaran
             </a>
         </div>
     </x-slot>

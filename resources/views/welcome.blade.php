@@ -290,7 +290,7 @@
                                     <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Edaran Sekolah</span>
                                 </div>
                                 <p class="text-xs sm:text-sm text-slate-700 mt-1 leading-relaxed">
-                                    KBM berlangsung pukul <strong>07:00 – 14:00 WIB</strong> (Senin s/d Kamis) dan pukul <strong>07:00 – 11:15 WIB</strong> (Khusus Jumat). Peserta didik wajib hadir tepat waktu dan menjaga ketertiban kehadiran minimum 85%.
+                                    KBM berlangsung pukul <strong>07:00 - 14:00 WIB</strong> (Senin s/d Kamis) dan pukul <strong>07:00 - 11:15 WIB</strong> (Khusus Jumat). Peserta didik wajib hadir tepat waktu dan menjaga ketertiban kehadiran minimum 85%.
                                 </p>
                             </div>
                         </div>
@@ -344,16 +344,16 @@
                         </h4>
                         <ul class="text-xs text-slate-700 space-y-2.5">
                             <li class="flex justify-between items-center">
-                                <span class="font-bold text-slate-800">Senin – Kamis:</span>
-                                <span class="font-black text-blue-900 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">07:00 – 14:00 WIB</span>
+                                <span class="font-bold text-slate-800">Senin s/d Kamis:</span>
+                                <span class="font-black text-blue-900 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">07:00 - 14:00 WIB</span>
                             </li>
                             <li class="flex justify-between items-center">
                                 <span class="font-bold text-slate-800">Jumat (KBM & Shalat):</span>
-                                <span class="font-black text-teal-900 bg-teal-50 px-2.5 py-1 rounded border border-teal-200">07:00 – 11:15 WIB</span>
+                                <span class="font-black text-teal-900 bg-teal-50 px-2.5 py-1 rounded border border-teal-200">07:00 - 11:15 WIB</span>
                             </li>
                             <li class="flex justify-between items-center">
                                 <span class="font-bold text-slate-800">Layanan Tata Usaha:</span>
-                                <span class="font-black text-slate-900 bg-slate-100 px-2.5 py-1 rounded border border-slate-300">07:30 – 15:00 WIB</span>
+                                <span class="font-black text-slate-900 bg-slate-100 px-2.5 py-1 rounded border border-slate-300">07:30 - 15:00 WIB</span>
                             </li>
                             <li class="flex justify-between items-center">
                                 <span class="font-bold text-slate-800">Sabtu & Minggu:</span>

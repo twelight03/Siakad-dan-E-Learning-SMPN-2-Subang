@@ -34,7 +34,7 @@
 
                 <div class="text-center pt-2">
                     <a href="{{ route('login') }}" class="text-xs text-blue-600 hover:text-blue-800 font-semibold underline">
-                        ← Kembali ke Halaman Login
+                        Kembali ke Halaman Login
                     </a>
                 </div>
             </form>

@@ -80,7 +80,7 @@
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Pilih Kelas Asal</label>
                             <select name="from_class_id" required class="w-full text-sm rounded-lg border-slate-300">
-                                <option value="" disabled selected>-- Pilih Kelas Asal --</option>
+                                <option value="" disabled selected>Pilih Kelas Asal</option>
                                 @foreach($classes as $c)
                                     <option value="{{ $c->id }}">
                                         {{ $c->name }} (Tingkat {{ $c->grade_level }} • {{ $c->enrollments_count }} siswa)
@@ -109,7 +109,7 @@
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Pilih Kelas Tujuan</label>
                             <select name="to_class_id" required class="w-full text-sm rounded-lg border-slate-300">
-                                <option value="" disabled selected>-- Pilih Kelas Tujuan --</option>
+                                <option value="" disabled selected>Pilih Kelas Tujuan</option>
                                 @foreach($classes as $c)
                                     <option value="{{ $c->id }}">
                                         {{ $c->name }} (Tingkat {{ $c->grade_level }})

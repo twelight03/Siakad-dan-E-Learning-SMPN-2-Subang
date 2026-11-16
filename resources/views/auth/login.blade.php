@@ -3,10 +3,7 @@
         
         <!-- Top Bar: Tombol Kembali ke Beranda di Pojok Kiri Atas -->
         <header class="w-full px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-start">
-            <a href="{{ url('/') }}" class="inline-flex items-center px-3.5 py-2 text-xs font-bold text-slate-700 hover:text-blue-800 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 shadow-2xs transition group">
-                <svg class="w-4 h-4 me-1.5 text-slate-500 group-hover:text-blue-800 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                </svg>
+            <a href="{{ url('/') }}" class="inline-flex items-center px-3.5 py-2 text-xs font-bold text-slate-700 hover:text-blue-800 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 shadow-2xs transition">
                 <span>Kembali ke Beranda</span>
             </a>
         </header>
