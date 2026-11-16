@@ -126,4 +126,20 @@ class AuthenticationTest extends TestCase
             'action' => 'login',
         ]);
     }
+
+    public function test_users_can_authenticate_using_case_insensitive_username(): void
+    {
+        $teacher = User::factory()->teacher()->create([
+            'username' => 'guru',
+            'password' => 'password',
+        ]);
+
+        $response = $this->post('/login', [
+            'username' => 'Guru', // capitalized as in user's table
+            'password' => 'password',
+        ]);
+
+        $this->assertAuthenticatedAs($teacher);
+        $response->assertRedirect(route('teacher.dashboard', absolute: false));
+    }
 }

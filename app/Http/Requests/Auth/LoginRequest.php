@@ -55,11 +55,18 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        $loginInput = $this->input('username');
+        $loginInput = trim($this->input('username'));
         $field = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        // Check if user exists and is inactive
-        $user = User::where($field, $loginInput)->first();
+        // Check if user exists (case-insensitive for username/email)
+        $userQuery = User::query();
+        if ($field === 'email') {
+            $userQuery->whereRaw('LOWER(email) = ?', [strtolower($loginInput)]);
+        } else {
+            $userQuery->whereRaw('LOWER(username) = ?', [strtolower($loginInput)]);
+        }
+        $user = $userQuery->first();
+
         if ($user && ! $user->is_active) {
             RateLimiter::hit($this->throttleKey());
 
@@ -68,7 +75,13 @@ class LoginRequest extends FormRequest
             ]);
         }
 
-        if (! Auth::attempt([$field => $loginInput, 'password' => $this->input('password')], $this->boolean('remember'))) {
+        // Attempt authentication using canonical credentials if user matched
+        $credentials = [
+            $field => $user ? $user->{$field} : $loginInput,
+            'password' => $this->input('password'),
+        ];
+
+        if (! Auth::attempt($credentials, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

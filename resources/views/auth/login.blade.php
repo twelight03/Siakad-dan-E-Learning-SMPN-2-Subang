@@ -54,6 +54,34 @@
                 </div>
             @endif
 
+            <!-- Demo Quick Filler Buttons -->
+            <div class="mb-5 p-3.5 rounded-xl bg-blue-50/80 border border-blue-200">
+                <span class="text-[11px] font-bold text-blue-900 block mb-2 uppercase tracking-wider flex items-center">
+                    <span class="w-2 h-2 rounded-full bg-blue-600 me-1.5"></span>
+                    Akun Uji Coba Demo (1-Klik Isi Form):
+                </span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button type="button" 
+                            @click="document.getElementById('username').value = 'admin'; document.getElementById('password').value = 'password';"
+                            class="px-2.5 py-1.5 bg-white hover:bg-blue-100 text-blue-900 rounded-lg text-xs font-bold border border-blue-300 shadow-2xs transition text-center cursor-pointer">
+                        🔑 Admin
+                    </button>
+                    <button type="button" 
+                            @click="document.getElementById('username').value = 'guru'; document.getElementById('password').value = 'password';"
+                            class="px-2.5 py-1.5 bg-white hover:bg-emerald-100 text-emerald-900 rounded-lg text-xs font-bold border border-emerald-300 shadow-2xs transition text-center cursor-pointer">
+                        👨‍🏫 Guru
+                    </button>
+                    <button type="button" 
+                            @click="document.getElementById('username').value = 'siswa'; document.getElementById('password').value = 'password';"
+                            class="px-2.5 py-1.5 bg-white hover:bg-indigo-100 text-indigo-900 rounded-lg text-xs font-bold border border-indigo-300 shadow-2xs transition text-center cursor-pointer">
+                        🎓 Siswa
+                    </button>
+                </div>
+                <p class="text-[10px] text-blue-700/80 mt-1.5 text-center">
+                    Klik tombol untuk mengisi username & kata sandi demo secara otomatis.
+                </p>
+            </div>
+
             <form method="POST" action="{{ route('login') }}" class="space-y-4">
                 @csrf
 
