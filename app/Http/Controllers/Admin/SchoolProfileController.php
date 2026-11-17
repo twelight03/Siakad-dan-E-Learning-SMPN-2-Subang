@@ -96,6 +96,7 @@ class SchoolProfileController extends Controller
         }
 
         ActivityLog::log('update', 'SchoolSetting', null, 'Memperbarui data pokok Dapodik dan profil sekolah.');
+        SchoolSetting::clearCache();
 
         return redirect()->route('admin.school-profile.index')
             ->with('success', 'Data pokok Dapodik dan identitas profil sekolah berhasil diperbarui!');

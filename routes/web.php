@@ -7,18 +7,20 @@ use App\Http\Controllers\Teacher\DashboardController as TeacherDashboardControll
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $dapodik = \App\Models\SchoolSetting::getDapodikStats();
+    $stats = \Illuminate\Support\Facades\Cache::remember('siakad_landing_page_stats', 3600, function () {
+        $dapodik = \App\Models\SchoolSetting::getDapodikStats();
 
-    $activeYear = null;
-    try {
-        if (\Illuminate\Support\Facades\Schema::hasTable('academic_years')) {
-            $activeYear = \App\Models\AcademicYear::where('is_active', true)->first();
+        $activeYear = null;
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('academic_years')) {
+                $activeYear = \App\Models\AcademicYear::where('is_active', true)->first();
+            }
+        } catch (\Throwable $e) {
+            // Fallback for tests or fresh installations
         }
-    } catch (\Throwable $e) {
-        // Fallback for tests or fresh installations
-    }
 
-    $stats = array_merge($dapodik, ['active_year' => $activeYear]);
+        return array_merge($dapodik, ['active_year' => $activeYear]);
+    });
 
     return view('welcome', compact('stats'));
 });
